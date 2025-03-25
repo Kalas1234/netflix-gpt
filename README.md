@@ -20,5 +20,5 @@ FEATURES
 
  3. NETFLIX GPT
      a.Search Bar 
-     b.Movie suggestions       
+     b.Movie suggestions      
 
