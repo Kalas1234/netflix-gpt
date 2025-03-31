@@ -20,7 +20,6 @@ const Login = () => {
         setSignInForm(!isSignInForm);
     };
     useEffect(() => {
-        console.log('check1', userAvailable)
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 const { uid, email, displayName, photoURL } = user;
@@ -46,7 +45,7 @@ const Login = () => {
 
         // Unsubscribe when component unmounts--
         return () => unsubscribe();
-    }, [navigate, dispatch, setUserAvailable]);
+    }, [navigate, dispatch, userAvailable]);
 
     const handleButtonClick = () => {
         const message = checkValidate(emailRef.current.value, passwordRef.current.value);
