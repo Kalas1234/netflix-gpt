@@ -3,6 +3,16 @@
 NETFLIX GPT
 1. use the command npx create-react-app to setup the basic folder strcuture for our react application
 2. do the tailwind css setup in our project
+3. Header component
+4. Routing of App.
+5. Login form
+6. form validation.
+7. useref hook.
+8. firebase setup.
+9. firebase deploy
+10. firebase authentication using signin sign up and signout api
+11. Redux store.
+12. onAuthStateChanged for tracking auth state change like sign in sign out and sign up
 
 
 FEATURES

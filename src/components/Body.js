@@ -4,6 +4,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import { RouterProvider } from 'react-router-dom';
 
 const Body = () => {
+
+
     const appRouter = createBrowserRouter([
         {
             path: '/',
@@ -17,7 +19,7 @@ const Body = () => {
     ]);
     return (
         <div>
-          <RouterProvider router={appRouter} />
+            <RouterProvider router={appRouter} />
         </div>
     );
 };
