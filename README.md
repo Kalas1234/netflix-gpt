@@ -13,9 +13,12 @@ NETFLIX GPT
 10. firebase authentication using signin sign up and signout api
 11. Redux store.
 12. onAuthStateChanged for tracking auth state change like sign in sign out and sign up
+13. solve the bug fix that if the user is already signed we should not redirect to login page without signout
+14. solve the bug fix that if the user is signout then it should not go browse page.
+15. put all the hardcoded value to constant file.
 
 
-FEATURES
+FEATURESqq
 1.Login
    a.signin/sign up form
    b.redirect to browse page(once user is authenticated)

@@ -1,16 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import Header from './Header';
 import { checkValidate } from '../utils/validate';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, onAuthStateChanged } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
-import { addUser, removeUser } from '../redux/slice/userslice';
+import { addUser} from '../redux/slice/userslice';
+import { PHOTO_URL, LOGO_URL } from '../utils/constants';
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [isSignInForm, setSignInForm] = useState(true);
-    const [userAvailable, setUserAvailable] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
@@ -19,33 +19,6 @@ const Login = () => {
     const toggleSignUpForm = () => {
         setSignInForm(!isSignInForm);
     };
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                const { uid, email, displayName, photoURL } = user;
-                dispatch(
-                    addUser({
-                        uid: uid,
-                        email: email,
-                        displayName: displayName,
-                        photoURL: photoURL,
-                    })
-                );
-                navigate("/browse");
-                setUserAvailable(true);
-            } else {
-                // User is signed out
-                // console.log(user);
-                dispatch(removeUser);
-                // console.log(user);
-                navigate("/");
-                setUserAvailable(false);
-            }
-        });
-
-        // Unsubscribe when component unmounts--
-        return () => unsubscribe();
-    }, [navigate, dispatch, userAvailable]);
 
     const handleButtonClick = () => {
         const message = checkValidate(emailRef.current.value, passwordRef.current.value);
@@ -58,8 +31,7 @@ const Login = () => {
                 .then((userCredential) => {
                     updateProfile(auth.currentUser, {
                         displayName: nameRef.current.value,
-                        photoURL:
-                            'https://avatars.githubusercontent.com/u/43087249?s=400&u=5a7c0d1c19b981421db5e4df78715c955a408a02&v=4'
+                        photoURL: PHOTO_URL,
                     })
                         .then((res) => {
                             console.log('check6', res)
@@ -109,7 +81,7 @@ const Login = () => {
             <div className="absolute">
                 <img
                     className="overflow-y-hidden"
-                    src="https://assets.nflxext.com/ffe/siteui/vlv3/f6e7f6df-6973-46ef-b98f-12560d2b3c69/web/IN-en-20250317-TRIFECTA-perspective_26f87873-6014-460d-a6fb-1d96d85ffe5f_medium.jpg"
+                    src= {LOGO_URL}
                     alt="logo"
                 />
             </div>

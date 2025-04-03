@@ -1,26 +1,57 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
+import { useDispatch } from 'react-redux';
+import { signOut, onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { useSelector } from 'react-redux';
+import { addUser, removeUser } from '../redux/slice/userslice';
+import { LOGO_URL } from '../utils/constants';
 
 const Header = () => {
     const navigate = useNavigate();
-    console.log('check12')
-    const user  = useSelector((store) => store?.user?.user || {} );
+    const dispatch = useDispatch();
+    const user = useSelector((store) => store?.user?.user || {});
 
     const handleSignOut = () => {
         signOut(auth)
             .then(() => {
-                navigate('/');
+                console.log('check6',auth)
             })
             .catch((error) => {
                 console.log(error);
             });
     };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (user) {
+                const { uid, email, displayName, photoURL } = user;
+                dispatch(
+                    addUser({
+                        uid: uid,
+                        email: email,
+                        displayName: displayName,
+                        photoURL: photoURL
+                    })
+                );
+                navigate('/browse');
+            } else {
+                // User is signed out
+                // console.log(user);
+                dispatch(removeUser);
+                // console.log(user);
+                navigate('/');
+            }
+        });
+
+        // Unsubscribe when component unmounts--
+        return () => unsubscribe();
+        // eslint-disable-next-line
+    }, []);
     return (
         <div className="absolute w-screen bg-gradient-to-b from-black px-8 py-2 flex justify-between">
             <img
-                src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+                src = {LOGO_URL}
                 alt="logo"
                 className="w-60"
             />
@@ -28,7 +59,7 @@ const Header = () => {
             {user && (
                 <div className="flex p-2 gap-2">
                     <img
-                        alt="https://occ-0-4209-3663.1.nflxso.net/dnm/api/v6/vN7bi_My87NPKvsBoib006Llxzg/AAAABTZ2zlLdBVC05fsd2YQAR43J6vB1NAUBOOrxt7oaFATxMhtdzlNZ846H3D8TZzooe2-FT853YVYs8p001KVFYopWi4D4NXM.png?r=229"
+                        alt="logo"
                         src={user?.photoURL}
                         className="w-12 h-12 mt-4"
                     />
