@@ -16,6 +16,8 @@ NETFLIX GPT
 13. solve the bug fix that if the user is already signed we should not redirect to login page without signout
 14. solve the bug fix that if the user is signout then it should not go browse page.
 15. put all the hardcoded value to constant file.
+16. Register your app and create the new app on tmdb 
+17. go to documentation of tmdb and take the api curl of addNowPlayling movies
 
 
 FEATURESqq

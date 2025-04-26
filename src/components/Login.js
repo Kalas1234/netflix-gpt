@@ -6,7 +6,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { addUser} from '../redux/slice/userslice';
-import { PHOTO_URL, LOGO_URL } from '../utils/constants';
+import { PHOTO_URL, BG_URL } from '../utils/constants';
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -34,7 +34,6 @@ const Login = () => {
                         photoURL: PHOTO_URL,
                     })
                         .then((res) => {
-                            console.log('check6', res)
                             const { uid, email, displayName, photoURL } = auth?.currentUser
                             dispatch(
                                 addUser({
@@ -81,7 +80,7 @@ const Login = () => {
             <div className="absolute">
                 <img
                     className="overflow-y-hidden"
-                    src= {LOGO_URL}
+                    src= {BG_URL}
                     alt="logo"
                 />
             </div>
@@ -96,7 +95,7 @@ const Login = () => {
                 <input ref={emailRef} type="text" placeholder="Email Address" className="p-2 my-4 w-full bg-gray-700" />
                 <input
                     ref={passwordRef}
-                    type="password"
+                    type="password"  
                     placeholder="password"
                     className="p-2 my-4 w-full bg-gray-700"
                 />
