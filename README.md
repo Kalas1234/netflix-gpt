@@ -18,6 +18,16 @@ NETFLIX GPT
 15. put all the hardcoded value to constant file.
 16. Register your app and create the new app on tmdb 
 17. go to documentation of tmdb and take the api curl of addNowPlayling movies
+18. created the custom hook for getting now playing movie data
+19. create movie slice.
+20. update the redux store with movie data.
+21. planning for movie container and secondary container
+22. fetch data for trailer video.
+23. update redux store with trailer video data.
+24. embed the youtube video(iframe).
+25. make it autoplay and mute.
+26. Tailwind css to make it look awesome.
+
 
 
 FEATURESqq

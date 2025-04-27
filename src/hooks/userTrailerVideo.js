@@ -6,7 +6,7 @@ import { addTrailerVideo } from '../redux/slice/moviesSlice';
 const useTrailerVideo = (movieId) => {
     const dispatch = useDispatch();
     const getVideo = async () => {
-        const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`, API_OPTIONS);
+        const data = await fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos`, API_OPTIONS);
         const json = await data.json();
 
         const filteredData = json?.results.filter((video) => video.type === 'Trailer');
