@@ -13,6 +13,7 @@ const Header = () => {
     const user = useSelector((store) => store?.user?.user || {});
 
     const handleSignOut = () => {
+        console.log('check8')
         signOut(auth)
             .then(() => {
                 console.log('check6',auth)
@@ -49,7 +50,7 @@ const Header = () => {
         // eslint-disable-next-line
     }, []);
     return (
-        <div className="absolute w-screen bg-gradient-to-b from-black px-8 py-2 flex justify-between">
+        <div className="absolute w-screen bg-gradient-to-b z-10 from-black px-8 py-2 flex justify-between">
             <img
                 src = {LOGO_URL}
                 alt="logo"
