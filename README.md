@@ -27,6 +27,9 @@ NETFLIX GPT
 24. embed the youtube video(iframe).
 25. make it autoplay and mute.
 26. Tailwind css to make it look awesome.
+27. GPT Search Page
+28. GPT search Bar
+29. Multi - language feature in our app
 
 
 
