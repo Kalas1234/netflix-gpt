@@ -7,7 +7,7 @@ export const API_OPTIONS = {
     headers: {
         accept: 'application/json',
         Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Njc1ZDAwNjNhMTdhN2Q2MDhjZTc5YWNjOTc0NjFmMiIsIm5iZiI6MTc0Mzk2NTIyNi4wODE5OTk4LCJzdWIiOiI2N2YyY2MyYTFiYjA0NzI4OTk5OTMyMzciLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.L_7HdRnF1laLxE8hXVHHubIjjT6NmIh5ClmtfSTqfR0'
+            'Bearer ' + process.env.REACT_APP_TMDB_API_KEY
     }
 };
 export const BG_URL =
@@ -30,3 +30,4 @@ export const SUPPORTED_LANGUAGES = [
     }
 ];
 
+export const OPENAI_SECRET_KEY = process.env.REACT_APP_OPENAI_SECRET_KEY 

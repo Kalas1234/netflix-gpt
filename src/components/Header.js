@@ -9,12 +9,19 @@ import { LOGO_URL } from '../utils/constants';
 import { toggleGptSearchView } from '../redux/slice/gptSlice';
 import { SUPPORTED_LANGUAGES } from '../utils/constants';
 import { changeLanguage } from '../redux/slice/configSlice';
+import { addGptMoviesResult } from '../redux/slice/gptSlice';
 
 const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const user = useSelector((store) => store?.user?.user || {});
     const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+   
+    if (!showGptSearch) {
+        dispatch(addGptMoviesResult({ moviesResult: null, moviesName: null }));
+    }
+
+
 
     const handleSignOut = () => {
         console.log('check8');
