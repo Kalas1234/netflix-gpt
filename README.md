@@ -30,6 +30,15 @@ NETFLIX GPT
 27. GPT Search Page
 28. GPT search Bar
 29. Multi - language feature in our app
+30. GPT search open ai api key
+31. GPT search chat api call
+32. fetch GPT movie suggestions from tmdb
+33. created gpt slice and add the data there
+34. reuse movielist component to create gpt movie suggestion container
+35. Memoization of the apis the help of redux store.
+36. Added .env file
+37. Make the Application Responsive.
+
 
 
 

@@ -68,11 +68,11 @@ const Header = () => {
         // eslint-disable-next-line
     }, []);
     return (
-        <div className="absolute w-screen bg-gradient-to-b z-10 from-black px-8 py-2 flex justify-between">
-            <img src={LOGO_URL} alt="logo" className="w-60" />
+        <div className="absolute w-screen bg-gradient-to-b z-10 from-black px-8 py-2 flex flex-col justify-between md:flex-row">
+            <img src={LOGO_URL} alt="logo" className="w-60 mx-auto md:m-0" />
 
             {user && (
-                <div className="flex p-2 gap-2">
+                <div className="flex p-2 gap-2 justify-between">
                     {showGptSearch && (
                         <select className="p-2 m-2 bg-gray-900 text-white" onChange={handleLanguageChnage}>
                             {SUPPORTED_LANGUAGES.map((lang) => (
@@ -88,7 +88,7 @@ const Header = () => {
                         onClick={handleGptSearch}>
                        {showGptSearch ? 'Home Page' : 'Gpt Search'}
                     </button>
-                    <img alt="logo" src={user?.photoURL} className="w-12 h-12 mt-4" />
+                    <img alt="logo" src={user?.photoURL} className="hidden w-12 h-12 mt-4 md:inline" />
                     <button onClick={handleSignOut} className="font-bold text-white">
                         Sign Out
                     </button>
